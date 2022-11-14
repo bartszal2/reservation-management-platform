@@ -13,7 +13,6 @@ asynchronous simulations of receiving data from the server with loading and erro
 **Contents**
 * [Technologies, frameworks and tools](#technologies-frameworks-and-tools)
 * [Features](#features)
-* [Installation](#installation)
 
 ---
 
@@ -65,20 +64,6 @@ The most important functionalities of the platform can be found below!
 * Platform statistics displayed on the Dashboard page
 * Responsive Web Design
 
-<br>
-
-#### [Back to top](#platform-for-managing-the-booking-of-rooms-and-digital-signage-system)
----
-
-## Installation
-In the source code editor, navigate to the folder containing the project source.
-#### `cd ../reservation-management-platform/src`
-
-Install the dependencies needed to run the application.
-#### `npm install`
-
-Launch the app!
-#### `npm start`
 <br>
 
 #### [Back to top](#platform-for-managing-the-booking-of-rooms-and-digital-signage-system)
