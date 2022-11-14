@@ -1,0 +1,11 @@
+@import '../../templates/ListPageTheme/listPageTheme';
+
+.main-screens-page {
+    @include listPageTheme(".main-screens-page");
+
+    &--content-center {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

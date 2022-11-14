@@ -1,0 +1,15 @@
+@import '../../mixins/animations/animations';
+
+.loading-spinner {
+    width: 80px;
+    height: 80px;
+    border-radius: 80px;
+    border: 8px solid var(--accent-secondary-color);
+    border-top: 8px solid var(--accent-primary-color);
+    border-radius: 50%;
+    animation: rotateAnimation 1.5s linear infinite;
+    position: relative;
+    margin: 0 auto;
+}
+
+@include rotateAnimation;

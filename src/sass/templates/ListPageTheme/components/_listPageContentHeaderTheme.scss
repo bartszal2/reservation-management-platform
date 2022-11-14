@@ -1,0 +1,132 @@
+@import '../../../components/inputs';
+@import '../../../components/buttons';
+@import '../../../components/select';
+
+@mixin listPageContentHeaderTheme {
+    .main-content__header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 2rem;
+        height: 8%;
+        gap: 1rem;
+        flex-wrap: wrap;
+
+        @media screen and (max-width: 1919px) {
+            height: auto;
+        }
+
+        @media screen and (max-width: 1400px) {
+            flex-direction: column;
+        }
+
+        @media print {
+            display: none;
+        }
+
+        .header__group {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            column-gap: 0.65rem;
+            row-gap: 1rem;
+
+            @media screen and (max-width: 500px) {
+                flex-direction: column;
+            }
+
+            .group__element-with-icon {
+                display: flex;
+                align-items: center;
+                position: relative;
+
+                @media screen and (max-width: 1400px) {
+                    flex: 1;
+                }
+
+                @media screen and (max-width: 500px) {
+                    width: 100%;
+                }
+
+                .group__input {
+                    @include input;
+                    width: 300px;
+                    padding-right: 2rem;
+
+                    @media screen and (max-width: 1400px) {
+                        flex: 1;
+                    }
+
+                    @media screen and (max-width: 625px) {
+                        width: 100%;
+                    }
+                }
+
+                    .material-symbols-outlined {
+                        position: absolute;
+                        right: 0.5rem;
+                        color: var(--third-text-color);
+                        font-size: 16px;
+                        user-select: none;
+                        pointer-events: none;
+                    }
+                }
+
+                .group__button {
+                    @include button;
+
+                    &:hover {
+                        @include button-hover;
+                    }
+
+                    @media screen and (max-width: 1400px) {
+                        width: 200px;
+                    }
+
+                    @media screen and (max-width: 625px) {
+                        width: 100%;
+                    }
+                }
+                
+                .group__label {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                    font-size: 13px;
+                    color: var(--third-text-color);
+                    position: relative;
+
+                    @media screen and (max-width: 1400px) {
+                        width: 100%;
+                        flex: 1;
+                    }
+                    
+                    @media screen and (max-width: 500px) {
+                        flex-direction: column;
+                        align-items: flex-start;
+                    }
+                }
+
+                .group__select {
+                    @include select;
+                    min-width: 180px;
+                    appearance: none;
+
+                    @media screen and (max-width: 1400px) {
+                        flex: 1;
+                    }
+
+                    @media screen and (max-width: 500px) {
+                        width: 100%;
+                        margin-top: 0.25rem;
+                    }
+
+                    .material-symbols-outlined {
+                        position: absolute;
+                        right: 0;
+                        user-select: none;
+                        pointer-events: none;
+                    }
+                }
+        }
+    }
+}

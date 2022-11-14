@@ -1,0 +1,19 @@
+@import './layout/grid';
+
+body {
+    &:has(.modal-container-open) {
+        overflow: hidden;
+    }
+}
+
+.container {
+    @include grid;
+    min-height: 100vh;
+    padding: 1rem;
+    background-color: var(--bg-primary-color);
+
+    @import './layout/ModalWindow/ModalWindow.scss';
+    @import './layout/Header/Header';
+    @import './layout/Sidebar/Sidebar';
+    @import './layout/Footer/Footer';
+}

@@ -1,0 +1,11 @@
+@import '../../templates/ListPageTheme/listPageTheme';
+
+.main-employeeres-page {
+    @include listPageTheme(".main-employeeres-page");
+
+    &--content-center {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

@@ -1,0 +1,50 @@
+@mixin slideDownWithOpacityAnimation {
+    @keyframes slideDownWithOpacityAnimation {
+        from {
+            opacity: 0;
+            transform: translateY(-4px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0px);
+        }
+    }
+}
+
+@mixin slideUpWithOpacityAnimation {
+    @keyframes slideUpWithOpacityAnimation {
+        from {
+            opacity: 0;
+            transform: translateY(4px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0px);
+        }
+    }
+}
+
+@mixin opacityAnimation {
+    @keyframes opacityAnimation {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+}
+
+@mixin rotateAnimation {
+    @keyframes rotateAnimation {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+}

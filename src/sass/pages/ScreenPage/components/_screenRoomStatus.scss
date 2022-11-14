@@ -1,0 +1,132 @@
+@mixin screenRoomStatus {
+    &__room-status {
+        grid-area: room-status;
+        background-color: rgba(5, 5, 5, 0.35);
+        border-radius: 16px;
+        height: 100%;
+        overflow: hidden;
+        position: relative;
+        opacity: 0;
+        animation: fadeOpenAnimation 0.6s ease forwards;
+
+        .room-status__block {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-align: center;
+            height: 100%;
+            position: relative;
+            animation: fadeOpenAnimation 0.6s ease forwards;
+
+            &--busy {
+                padding: 1.5rem;
+            }
+
+            &--free {
+                padding: 0rem;
+            }
+
+            .block__text {
+                font-weight: 700;
+                font-size: 32px;
+                height: 20%;
+                padding: 1rem 0;
+                border-radius: 16px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                &--busy {
+                    background-color: rgba(255, 0, 0, 0.1);
+                    color: rgb(255, 36, 36);
+                }
+
+                &--free {
+                    background-color: rgba(157, 255, 0, 0.1);
+                    color: rgb(160, 255, 36);
+                    height: 100%;
+                }
+            }
+
+            .block__name {
+                font-size: 20px;
+                font-weight: 700;
+                overflow: hidden;
+            }
+
+            .block__description {
+                font-size: 13px;
+                color: #888;
+                line-height: 22px;
+                overflow: hidden;
+            }
+
+            .block__group {
+                display: flex;
+                justify-content: center;
+                gap: 1rem;
+                padding: 0 3rem;
+
+                .group__element {
+                    font-size: 10px;
+                    text-transform: uppercase;
+                    font-weight: 600;
+                    color: #AAA;
+                    background-color: rgba(50, 50, 50, 0.2);
+                    border-radius: 8px;
+                    padding: 0.6rem 1.5rem;
+                }
+            }
+
+            .block__progress-bar {
+                background-color: rgba(255, 0, 0, 0.1);
+                height: 32px;
+                border-radius: 6px;
+                position: relative;
+                overflow: hidden;
+
+                .progress-bar__time-start {
+                    position: absolute;
+                    left: 1rem;
+                    z-index: 2;
+                    font-size: 12px;
+                    font-weight: 600;
+                    top: 22%;
+                }
+
+                .progress-bar__value {
+                    width: 50%;
+                    height: 100%;
+                    background-color: rgb(255, 36, 36);
+                    border-radius: 6px;
+                    top: 0;
+                    left: 0;
+                    position: absolute;
+                    transition: 0.4s ease-in-out;
+                }
+
+                .progress-bar__time-end {
+                    position: absolute;
+                    right: 1rem;
+                    z-index: 2;
+                    font-size: 12px;
+                    font-weight: 600;
+                    top: 22%;
+                }
+            }
+
+            .block__countdown {
+                .countdown__text {
+                    color: #AAA;
+                    font-size: 14px;
+                }
+
+                .coutdown__value {
+                    margin-top: 0.25rem;
+                    font-weight: 700;
+                    font-size: 24px;
+                }
+            } 
+        }
+    }
+}

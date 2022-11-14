@@ -1,0 +1,11 @@
+@import '../../templates/InfoPageTheme/infoPageTheme';
+
+.main-employee-info-page {
+    @include infoPageTheme(".main-employee-info-page");
+
+    &--content-center {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

@@ -1,0 +1,17 @@
+@mixin scrollbar {
+    &::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+        border-radius: 8px;
+        background-color: var(--scrollbar-color)
+    }
+
+    &::-webkit-scrollbar-thumb {
+        border-radius: 8px;
+        background-color: var(--scrollbar-thumb-color);
+    } 
+
+    &::-webkit-scrollbar-corner {
+        background-color: transparent;
+    }
+}

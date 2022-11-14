@@ -1,0 +1,11 @@
+@import '../../templates/InfoPageTheme/infoPageTheme';
+
+.main-screen-info-page {
+    @include infoPageTheme(".main-screen-info-page");
+
+    &--content-center {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

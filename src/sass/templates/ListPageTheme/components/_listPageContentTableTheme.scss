@@ -1,0 +1,16 @@
+@import '../../../layout/scrollbar';
+@import '../../../layout//table';
+
+@mixin listPageContentTableTheme {
+    .main-content__table-container{
+        max-height: calc(92% - 2rem);
+        overflow-y: auto;
+
+        @media screen and (max-width: 1919px) {
+            height: 600px;
+        }
+
+        @include scrollbar;
+        @include table;
+    }
+}

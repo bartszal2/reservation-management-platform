@@ -1,0 +1,7 @@
+@import './listPageContentHeaderTheme';
+@import './listPageContentTableTheme';
+
+@mixin listPageContentTheme {
+    @include listPageContentHeaderTheme;
+    @include listPageContentTableTheme;
+}

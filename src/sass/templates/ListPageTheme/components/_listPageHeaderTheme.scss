@@ -1,0 +1,111 @@
+@import '../../../components/buttons';
+@import '../../../mixins/animations/animations';
+
+@mixin listPageHeaderTheme {
+    height: 30%;
+    padding: 1.25rem 1rem;
+    border-radius: 12px;
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+
+    @media screen and (max-width: 1919px) {
+        height: auto;
+    }
+
+    @media screen and (max-width: 800px) {
+        flex-direction: column;
+    }
+
+    @media print {
+        height: auto;
+        margin-bottom: 1rem;
+        box-shadow: none;
+        padding: 1rem 0;
+    }
+
+    .header__title {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-weight: 700;
+        font-size: 18px;
+        opacity: 0;
+        animation: slideDownWithOpacityAnimation 1s ease forwards;
+
+        @media print {
+            color: black;
+        }
+
+        .material-symbols-outlined {
+            font-size: 34px;
+            color: var(--accent-primary-color);
+
+            @media print {
+                color: black;
+            }
+        }
+    }
+
+    .header__nav {
+        display: flex;
+        align-items: center;
+        gap: 0.65rem;
+        flex-wrap: wrap;
+
+        @media screen and (max-width: 800px) {
+            flex-direction: column;
+        }
+
+        @media print {
+            display: none;
+        }
+
+        .nav__button {
+            @include button;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+
+            @media screen and (max-width: 800px) {
+                width: 100%;
+                justify-content: center;
+            }
+
+            &:hover {
+                @include button-hover;
+            }
+
+            &:disabled {
+                @include button-disabled;
+
+                &:hover {
+                    @include button-disabled-hover;
+                }
+            }
+
+            .material-symbols-outlined {
+                font-size: 15px;
+            }
+        }
+    }
+
+    .header__text {
+        color: var(--third-text-color);
+        font-size: 13px;
+        line-height: 22px;
+        opacity: 0;
+        animation: slideUpWithOpacityAnimation 1s ease forwards;
+
+        @media print {
+            font-size: 11pt;
+            color: black;
+        }
+    }
+
+    @include slideDownWithOpacityAnimation;
+    @include slideUpWithOpacityAnimation;
+}

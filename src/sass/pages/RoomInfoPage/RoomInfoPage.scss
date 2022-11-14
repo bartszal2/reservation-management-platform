@@ -1,0 +1,11 @@
+@import '../../templates/InfoPageTheme/infoPageTheme';
+
+.main-room-info-page {
+    @include infoPageTheme(".main-room-info-page");
+
+    &--content-center {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

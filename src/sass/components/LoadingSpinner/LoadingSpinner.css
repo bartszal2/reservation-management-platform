@@ -1,0 +1,30 @@
+.loading-spinner {
+  width: 80px;
+  height: 80px;
+  border-radius: 80px;
+  border: 8px solid var(--accent-secondary-color);
+  border-top: 8px solid var(--accent-primary-color);
+  border-radius: 50%;
+  -webkit-animation: rotateAnimation 1.5s linear infinite;
+          animation: rotateAnimation 1.5s linear infinite;
+  position: relative;
+  margin: 0 auto;
+}
+
+@-webkit-keyframes rotateAnimation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotateAnimation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}/*# sourceMappingURL=LoadingSpinner.css.map */

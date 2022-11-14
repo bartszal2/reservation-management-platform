@@ -1,0 +1,98 @@
+@import '../../../layout/scrollbar';
+
+@mixin infoPageContentTheme {
+    height: auto;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, max-content);
+    gap: 1rem;
+
+    @include scrollbar;
+
+    @media screen and (max-width: 1000px) {
+        grid-template-columns: 1fr;
+        grid-template-rows: none;
+    }
+
+    .content__element {
+        padding: 1.25rem 1rem;
+        background-color: var(--bg-primary-color);
+        border: 1px solid var(--bg-third-color);
+        border-radius: 6px;
+        margin-right: 1.5rem;
+
+        @media screen and (max-width: 1400px) {
+            grid-column: auto / span 2;
+        }
+
+        @media screen and (max-width: 1000px) {
+            grid-column: auto;
+            margin-right: 0;
+        }
+
+        .element__title {
+            color: var(--fourth-text-color);
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            margin-bottom: 0.3rem;
+        }
+
+        .element__value {
+            color: var(--secondary-text-color);
+            font-size: 13px;
+            line-height: 22px;
+        }
+    }
+
+    .content__element--active {
+            background-color: var(--accent-primary-color);
+            border: 1px solid var(--accent-secondary-color);
+            font-weight: 700;
+
+        .element__title {
+            background-color: var(--accent-primary-color);
+            font-weight: 700;
+            color: var(--accent-text-color);
+        }
+
+        .element__value {
+            color: var(--accent-text-color);
+        }
+    }
+
+    .content__element--inactive {
+        background-color: var(--bg-third-color);
+        font-weight: 700;
+    }
+
+    .content__element--two-width {
+        grid-column: auto / span 2;
+
+        @media screen and (max-width: 1000px) {
+            grid-column: auto;
+        }
+    }
+
+    .content__element--three-width {
+        grid-column: auto / span 3;
+
+        @media screen and (max-width: 1400px) {
+            grid-column: auto / span 2;
+        }
+
+        @media screen and (max-width: 1000px) {
+            grid-column: auto;
+        }
+    }
+
+    .content__element--full-width {
+        grid-column: auto / span 4;
+
+        @media screen and (max-width: 1000px) {
+            grid-column: auto;
+        }
+    }
+}

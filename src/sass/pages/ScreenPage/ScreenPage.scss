@@ -1,0 +1,175 @@
+@import './components/screenRoomName';
+@import './components/screenRoomStatus';
+@import './components/screenMeetingReservation';
+@import './components/screenMeetingsList';
+
+.screen-page {
+    color: white;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    margin: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    padding: 3rem;
+    background-color: black;
+    z-index: 999;
+    display: grid;
+    grid-template-columns: 1fr 0.8fr;
+    grid-template-rows: 100px 1fr 125px;
+    grid-template-areas: 'room-name meetings-list'
+                         'room-status meetings-list'
+                         'meeting-reservation meetings-list';
+    gap: 1.5rem;
+
+    &::after {
+        content: '';
+        position: absolute;
+        background: linear-gradient(to top, transparent, rgba(225, 225, 225, 0.1));
+        width: 100%;
+        height: 800px;
+        right: 1rem;
+        bottom: 0;
+        border-radius: 0px;
+        z-index: -1;
+        filter: blur(100px);
+        opacity: 0;
+        animation: fadeOpenAnimation 2s 3s ease-in-out forwards, testBounceAnimation 2s ease-in-out alternate infinite;
+
+        @keyframes testBounceAnimation {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(10deg) scale(1.2);
+            }
+        }
+    }
+
+    &__error {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+
+        .error__title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .error__description {
+            color: #AAA;
+            font-size: 14px;
+            line-height: 20px;
+            width: 800px;
+            text-align: center;
+        }
+    }
+
+    &__format-text {
+        width: 100%;
+        height: 100%;
+        padding: 0 30%;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        color: #EEE;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 24px;
+        position: absolute;
+        z-index: 99;
+        backdrop-filter: blur(50px);
+    }
+
+    &__id {
+        position: absolute;
+        right: 1rem;
+        top: -1rem;
+        opacity: 0.35;
+        font-size: 12px;
+        animation: screenIdAnimation 0.65s 0.25s ease-in-out forwards;
+    }
+
+    @keyframes screenIdAnimation {
+        from {
+            top: -1rem;
+        }
+
+        to {
+            top: 1rem;
+        }
+    }
+
+    @include screenRoomName;
+    @include screenRoomStatus;
+    @include screenMeetingReservation;
+    @include screenMeetingsList;
+
+    .content-loading {
+        &::before {
+            content: '';
+            height: 100%;
+            width: 650px;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to right, transparent, rgba(25, 25, 25, 0.5), transparent);
+            position: absolute;
+            opacity: 0;
+            animation: loadingAnimation 1.25s linear infinite, fadeOpenAnimation 1s ease-in-out forwards;
+            z-index: -1;
+            transition: 1s ease-in-out;
+        }
+
+        @keyframes loadingAnimation  {
+            from {
+                left: calc(0% - 650px - 2rem);
+            }
+
+            to {
+                left: calc(100% + 2rem);
+            }
+        }
+    }
+
+    .content-loaded {
+        opacity: 0;
+        animation: fadeOpenAnimation 1.25s ease forwards;
+    }
+
+    &__update-countdown {
+        position: absolute;
+        left: 1rem;
+        bottom: -1rem;
+        opacity: 0.35;
+        font-size: 12px;
+        animation: screenUpdateStatusAnimation 0.65s 0.25s ease forwards;
+    }
+
+    @keyframes screenUpdateStatusAnimation {
+        from {
+            bottom: -1rem;
+        }
+
+        to {
+            bottom: 1rem;
+        }
+    }
+
+    @keyframes fadeOpenAnimation {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+}

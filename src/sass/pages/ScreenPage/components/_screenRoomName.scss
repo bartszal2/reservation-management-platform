@@ -1,0 +1,12 @@
+@mixin screenRoomName {
+    &__room-name {
+        grid-area: room-name;
+        background-color: rgba(5, 5, 5, 0.35);
+        border-radius: 16px;
+        padding: 1.5rem;
+        overflow: hidden;
+        position: relative;
+        font-weight: 700;
+        font-size: 28px;
+    }
+}

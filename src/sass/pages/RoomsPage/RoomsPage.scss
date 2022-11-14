@@ -1,0 +1,11 @@
+@import '../../templates/ListPageTheme/listPageTheme';
+
+.main-rooms-page {
+    @include listPageTheme(".main-rooms-page");
+
+    &--content-center {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

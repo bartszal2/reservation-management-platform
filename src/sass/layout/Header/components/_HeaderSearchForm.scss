@@ -1,0 +1,54 @@
+@import '../../../components/inputs';
+@import '../../../components/buttons';
+
+.header__search-form {
+
+    .search-form {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        gap: 0.8rem;
+
+        @media screen and (max-width: 550px) {
+            flex-direction: column;
+            gap: 0.65rem;
+        }
+
+        .search-form__input {
+            @include input;
+            max-width: 400px;
+            width: 400px;
+
+            @media screen and (max-width: 1050px) {
+                max-width: none;
+                flex: 1;
+            }
+
+            @media screen and (max-width: 550px) {
+                padding: 0.8rem 1rem;
+                width: 100%;
+            }
+        }
+
+        .search-form__button {
+            @include button;
+
+            &:hover {
+                @include button-hover;
+            }
+
+            @media screen and (max-width: 550px) {
+                width: 100%;
+                padding: 0.8rem 1.25rem;
+            }
+
+            &:disabled {
+                @include button-disabled;
+
+                &:hover {
+                    @include button-disabled-hover;
+                }
+            } 
+        }
+    }
+}

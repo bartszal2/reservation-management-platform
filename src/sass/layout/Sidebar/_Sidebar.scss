@@ -1,0 +1,188 @@
+@import '../../components/menu-elements';
+@import '../../components/buttons';
+
+.sidebar {
+    grid-area: sidebar;
+    background-color: var(--bg-secondary-color);
+    color: var(--primary-text-color);
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.045);
+    padding: 1.5rem;
+    border-radius: 6px;
+
+    @media screen and (max-width: 1400px) {
+        position: fixed;
+        width: 300px;
+        top: 0;
+        right: 0;
+        height: 100%;
+        transition: var(--primary-transition);
+        z-index: 1;
+        visibility: hidden;
+        opacity: 0;
+        transform: translateX(300px);
+    }
+
+    @media screen and (max-width: 600px) {
+        width: 100vw;
+        padding-bottom: 4rem;
+    }
+
+    @media print {
+        display: none;
+    }
+
+    .sidebar__logoname {
+        height: 10%;
+        padding-bottom: 1rem;
+
+        @media screen and (max-width: 1400px) {
+            display: flex;
+            justify-content: space-between;
+            gap: 1.5rem;
+        }
+
+        .logoname__title {
+            height: 100%;
+            border-radius: 8px;
+            background: var(--accent-gradient);
+            color: var(--accent-text-color);
+            font-size: 13px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            @media screen and (max-width: 1400px) {
+                flex: 1;
+            }
+        }
+
+        .logoname__close-menu {
+            @include button;
+            display: none;
+            height: 35px;
+            width: 35px;
+            border-radius: 50%;
+            padding: 0;
+
+            &:hover {
+                @include button;
+            }
+
+            @media screen and (max-width: 1400px) {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .material-symbols-outlined {
+                font-size: 18px;
+                font-weight: 600;
+            }
+        }
+    }
+
+    .sidebar__menu {
+        height: 70%;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        .menu__element {
+            @include menu-element;
+
+            @media screen and (max-width: 1200px) {
+                padding: 0.6rem 0.8rem;
+            }
+    
+            &:hover {
+                @include menu-element-hover;
+
+                .material-symbols-outlined {
+                    color: var(--menu-element-hover-color);
+                }
+            }
+            
+            .material-symbols-outlined {
+                font-size: 22px;
+                color: var(--third-text-color);
+                transition: var(--secondary-transition);
+            }
+        }
+
+        .menu__element--active {
+            background-color: var(--menu-element-hover-bg-color);
+            color: var(--menu-element-hover-color);
+            font-weight: 700;
+
+            .material-symbols-outlined {
+                color: var(--menu-element-hover-color)
+            }
+        }
+    }
+
+    .sidebar__calendar {
+        height: 20%;
+        max-width: 250px;
+        margin: 0 auto;
+
+        .calendar__header {
+            font-size: 10px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            background-color: var(--menu-element-hover-bg-color);
+            color: var(--menu-element-hover-color);
+            padding: 0.4rem 0.6rem;
+            border-radius: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+
+            .calendar__datetime {
+                margin-top: 0.25rem;
+                font-size: 13px;
+                font-weight: 700;
+                letter-spacing: normal;
+                display: block;
+            }
+        }
+
+        .calendar__content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .content__calendar-day {
+                background-color: var(--menu-element-hover-bg-color);
+                color: var(--menu-element-hover-color);
+                padding: 1.25rem 0.3rem;
+                border-radius: 12px;
+                user-select: none;
+
+                .calendar-day__number {
+                    text-align: center;
+                    font-weight: 700;
+                    font-size: 12px;
+                }
+
+                .calendar-day__name {
+                    text-align: center;
+                    font-size: 10px;
+                }
+            }
+
+            .content__calendar-day--active{
+                background-color: var(--accent-primary-color);
+                z-index: 2;
+                color: var(--accent-text-color);
+                padding: 1.8rem 0.4rem;
+            }
+        }
+    }
+}
+
+.sidebar--open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0px);
+}

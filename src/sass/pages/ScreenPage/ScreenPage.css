@@ -1,0 +1,462 @@
+.screen-page {
+  color: white;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  margin: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  padding: 3rem;
+  background-color: black;
+  z-index: 999;
+  display: grid;
+  grid-template-columns: 1fr 0.8fr;
+  grid-template-rows: 100px 1fr 125px;
+  grid-template-areas: "room-name meetings-list" "room-status meetings-list" "meeting-reservation meetings-list";
+  gap: 1.5rem;
+}
+.screen-page::after {
+  content: "";
+  position: absolute;
+  background: linear-gradient(to top, transparent, rgba(225, 225, 225, 0.1));
+  width: 100%;
+  height: 800px;
+  right: 1rem;
+  bottom: 0;
+  border-radius: 0px;
+  z-index: -1;
+  filter: blur(100px);
+  opacity: 0;
+  -webkit-animation: fadeOpenAnimation 2s 3s ease-in-out forwards, testBounceAnimation 2s ease-in-out alternate infinite;
+          animation: fadeOpenAnimation 2s 3s ease-in-out forwards, testBounceAnimation 2s ease-in-out alternate infinite;
+}
+@-webkit-keyframes testBounceAnimation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(10deg) scale(1.2);
+  }
+}
+@keyframes testBounceAnimation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(10deg) scale(1.2);
+  }
+}
+.screen-page__error {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+}
+.screen-page__error .error__title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+.screen-page__error .error__description {
+  color: #AAA;
+  font-size: 14px;
+  line-height: 20px;
+  width: 800px;
+  text-align: center;
+}
+.screen-page__format-text {
+  width: 100%;
+  height: 100%;
+  padding: 0 30%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #EEE;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  position: absolute;
+  z-index: 99;
+  -webkit-backdrop-filter: blur(50px);
+          backdrop-filter: blur(50px);
+}
+.screen-page__id {
+  position: absolute;
+  right: 1rem;
+  top: -1rem;
+  opacity: 0.35;
+  font-size: 12px;
+  -webkit-animation: screenIdAnimation 0.65s 0.25s ease-in-out forwards;
+          animation: screenIdAnimation 0.65s 0.25s ease-in-out forwards;
+}
+@-webkit-keyframes screenIdAnimation {
+  from {
+    top: -1rem;
+  }
+  to {
+    top: 1rem;
+  }
+}
+@keyframes screenIdAnimation {
+  from {
+    top: -1rem;
+  }
+  to {
+    top: 1rem;
+  }
+}
+.screen-page__room-name {
+  grid-area: room-name;
+  background-color: rgba(5, 5, 5, 0.35);
+  border-radius: 16px;
+  padding: 1.5rem;
+  overflow: hidden;
+  position: relative;
+  font-weight: 700;
+  font-size: 28px;
+}
+.screen-page__room-status {
+  grid-area: room-status;
+  background-color: rgba(5, 5, 5, 0.35);
+  border-radius: 16px;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  opacity: 0;
+  -webkit-animation: fadeOpenAnimation 0.6s ease forwards;
+          animation: fadeOpenAnimation 0.6s ease forwards;
+}
+.screen-page__room-status .room-status__block {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  height: 100%;
+  position: relative;
+  -webkit-animation: fadeOpenAnimation 0.6s ease forwards;
+          animation: fadeOpenAnimation 0.6s ease forwards;
+}
+.screen-page__room-status .room-status__block--busy {
+  padding: 1.5rem;
+}
+.screen-page__room-status .room-status__block--free {
+  padding: 0rem;
+}
+.screen-page__room-status .room-status__block .block__text {
+  font-weight: 700;
+  font-size: 32px;
+  height: 20%;
+  padding: 1rem 0;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.screen-page__room-status .room-status__block .block__text--busy {
+  background-color: rgba(255, 0, 0, 0.1);
+  color: rgb(255, 36, 36);
+}
+.screen-page__room-status .room-status__block .block__text--free {
+  background-color: rgba(157, 255, 0, 0.1);
+  color: rgb(160, 255, 36);
+  height: 100%;
+}
+.screen-page__room-status .room-status__block .block__name {
+  font-size: 20px;
+  font-weight: 700;
+  overflow: hidden;
+}
+.screen-page__room-status .room-status__block .block__description {
+  font-size: 13px;
+  color: #888;
+  line-height: 22px;
+  overflow: hidden;
+}
+.screen-page__room-status .room-status__block .block__group {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 0 3rem;
+}
+.screen-page__room-status .room-status__block .block__group .group__element {
+  font-size: 10px;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #AAA;
+  background-color: rgba(50, 50, 50, 0.2);
+  border-radius: 8px;
+  padding: 0.6rem 1.5rem;
+}
+.screen-page__room-status .room-status__block .block__progress-bar {
+  background-color: rgba(255, 0, 0, 0.1);
+  height: 32px;
+  border-radius: 6px;
+  position: relative;
+  overflow: hidden;
+}
+.screen-page__room-status .room-status__block .block__progress-bar .progress-bar__time-start {
+  position: absolute;
+  left: 1rem;
+  z-index: 2;
+  font-size: 12px;
+  font-weight: 600;
+  top: 22%;
+}
+.screen-page__room-status .room-status__block .block__progress-bar .progress-bar__value {
+  width: 50%;
+  height: 100%;
+  background-color: rgb(255, 36, 36);
+  border-radius: 6px;
+  top: 0;
+  left: 0;
+  position: absolute;
+  transition: 0.4s ease-in-out;
+}
+.screen-page__room-status .room-status__block .block__progress-bar .progress-bar__time-end {
+  position: absolute;
+  right: 1rem;
+  z-index: 2;
+  font-size: 12px;
+  font-weight: 600;
+  top: 22%;
+}
+.screen-page__room-status .room-status__block .block__countdown .countdown__text {
+  color: #AAA;
+  font-size: 14px;
+}
+.screen-page__room-status .room-status__block .block__countdown .coutdown__value {
+  margin-top: 0.25rem;
+  font-weight: 700;
+  font-size: 24px;
+}
+.screen-page__meeting-reservation {
+  grid-area: meeting-reservation;
+  background-color: rgba(5, 5, 5, 0.35);
+  border-radius: 16px;
+  padding: 1.5rem;
+  overflow: hidden;
+  position: relative;
+  font-size: 13px;
+  line-height: 22px;
+  color: #888;
+}
+.screen-page__meeting-reservation .meeting-reservation__title {
+  color: #AAA;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+.screen-page__meetings-list {
+  grid-area: meetings-list;
+  background-color: rgba(5, 5, 5, 0.35);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 3rem;
+  overflow: hidden;
+  position: relative;
+}
+.screen-page__meetings-list::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 50%;
+  width: 100%;
+  background: linear-gradient(to top, rgb(5, 5, 5), rgba(5, 5, 5, 0.6), transparent);
+}
+.screen-page__meetings-list .meetings-list__title {
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+.screen-page__meetings-list .meetings-list__error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-weight: 700;
+  font-size: 13px;
+  color: #888;
+  opacity: 0;
+  -webkit-animation: fadeOpenAnimation 0.6s ease forwards;
+          animation: fadeOpenAnimation 0.6s ease forwards;
+}
+.screen-page__meetings-list .meetings-list__meeting {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 13px;
+  padding: 1rem 1.25rem;
+  border: 1px solid #222;
+  border-radius: 8px;
+  margin-bottom: 0.85rem;
+  opacity: 0;
+  transition: 0.45s ease;
+  -webkit-animation: fadeOpenAnimation 0.6s ease forwards;
+          animation: fadeOpenAnimation 0.6s ease forwards;
+}
+.screen-page__meetings-list .meetings-list__meeting .meeting__group {
+  flex: 3;
+}
+.screen-page__meetings-list .meetings-list__meeting .meeting__group .group__name {
+  font-weight: 600;
+}
+.screen-page__meetings-list .meetings-list__meeting .meeting__group .group__description {
+  margin-top: 0.5rem;
+  font-size: 11px;
+  line-height: 16px;
+  color: #AAA;
+}
+.screen-page__meetings-list .meetings-list__meeting .meeting__category {
+  flex: 2;
+}
+.screen-page__meetings-list .meetings-list__meeting .meeting__date {
+  flex: 1;
+  color: #999;
+}
+.screen-page__meetings-list .meetings-list__meeting .meeting__time {
+  flex: 1;
+  color: #999;
+}
+.screen-page__meetings-list .meetings-list__meeting .meeting__employee {
+  flex: 1;
+}
+.screen-page__meetings-list .meetings-list__meeting--active {
+  background-color: rgba(255, 0, 0, 0.1);
+  color: tomato;
+  border: 1px solid rgba(90, 35, 35, 0.45);
+  transition: 0.45s ease;
+}
+.screen-page__meetings-list .meetings-list__meeting--active .meeting__group .group__status {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 0.25px;
+  color: rgb(255, 169, 154);
+  margin-bottom: 0.2rem;
+  padding-left: 0.8rem;
+  position: relative;
+}
+.screen-page__meetings-list .meetings-list__meeting--active .meeting__group .group__status::after {
+  content: "";
+  position: absolute;
+  height: 6px;
+  width: 6px;
+  border-radius: 6px;
+  top: 0.25rem;
+  left: 0;
+  background-color: transparent;
+  -webkit-animation: activeStatusAnimation 0.85s ease-in-out alternate infinite;
+          animation: activeStatusAnimation 0.85s ease-in-out alternate infinite;
+}
+@-webkit-keyframes activeStatusAnimation {
+  from {
+    background-color: transparent;
+  }
+  to {
+    background-color: tomato;
+  }
+}
+@keyframes activeStatusAnimation {
+  from {
+    background-color: transparent;
+  }
+  to {
+    background-color: tomato;
+  }
+}
+.screen-page__meetings-list .meetings-list__meeting--active .meeting__group .group__name {
+  font-weight: 700;
+  font-size: 12px;
+}
+.screen-page__meetings-list .meetings-list__meeting--active .meeting__group .group__description {
+  color: tomato;
+}
+.screen-page__meetings-list .meetings-list__meeting--active .meeting__date {
+  color: tomato;
+}
+.screen-page__meetings-list .meetings-list__meeting--active .meeting__time {
+  color: tomato;
+}
+.screen-page .content-loading::before {
+  content: "";
+  height: 100%;
+  width: 650px;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to right, transparent, rgba(25, 25, 25, 0.5), transparent);
+  position: absolute;
+  opacity: 0;
+  -webkit-animation: loadingAnimation 1.25s linear infinite, fadeOpenAnimation 1s ease-in-out forwards;
+          animation: loadingAnimation 1.25s linear infinite, fadeOpenAnimation 1s ease-in-out forwards;
+  z-index: -1;
+  transition: 1s ease-in-out;
+}
+@-webkit-keyframes loadingAnimation {
+  from {
+    left: calc(0% - 650px - 2rem);
+  }
+  to {
+    left: calc(100% + 2rem);
+  }
+}
+@keyframes loadingAnimation {
+  from {
+    left: calc(0% - 650px - 2rem);
+  }
+  to {
+    left: calc(100% + 2rem);
+  }
+}
+.screen-page .content-loaded {
+  opacity: 0;
+  -webkit-animation: fadeOpenAnimation 1.25s ease forwards;
+          animation: fadeOpenAnimation 1.25s ease forwards;
+}
+.screen-page__update-countdown {
+  position: absolute;
+  left: 1rem;
+  bottom: -1rem;
+  opacity: 0.35;
+  font-size: 12px;
+  -webkit-animation: screenUpdateStatusAnimation 0.65s 0.25s ease forwards;
+          animation: screenUpdateStatusAnimation 0.65s 0.25s ease forwards;
+}
+@-webkit-keyframes screenUpdateStatusAnimation {
+  from {
+    bottom: -1rem;
+  }
+  to {
+    bottom: 1rem;
+  }
+}
+@keyframes screenUpdateStatusAnimation {
+  from {
+    bottom: -1rem;
+  }
+  to {
+    bottom: 1rem;
+  }
+}
+@-webkit-keyframes fadeOpenAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeOpenAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}/*# sourceMappingURL=ScreenPage.css.map */

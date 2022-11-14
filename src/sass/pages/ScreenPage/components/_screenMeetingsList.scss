@@ -1,0 +1,147 @@
+@mixin screenMeetingsList {
+    &__meetings-list {
+        grid-area: meetings-list;
+        background-color: rgba(5, 5, 5, 0.35);
+        border-radius: 16px;
+        padding: 1.5rem;
+        margin-bottom: 3rem;
+        overflow: hidden;
+        position: relative;
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 50%;
+            width: 100%;
+            background: linear-gradient(to top, rgb(5, 5, 5), rgba(5, 5, 5, 0.6), transparent);
+        }
+
+        .meetings-list__title {
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .meetings-list__error {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            font-weight: 700;
+            font-size: 13px;
+            color: #888;
+            opacity: 0;
+            animation: fadeOpenAnimation 0.6s ease forwards;
+        }
+
+        .meetings-list__meeting {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            font-size: 13px;
+            padding: 1rem 1.25rem;
+            border: 1px solid #222;
+            border-radius: 8px;
+            margin-bottom: 0.85rem;
+            opacity: 0;
+            transition: 0.45s ease;
+            animation: fadeOpenAnimation 0.6s ease forwards;
+
+            .meeting__group {
+                flex: 3;
+                
+                .group__name {
+                    font-weight: 600;
+                }
+
+                .group__description {
+                    margin-top: 0.5rem;
+                    font-size: 11px;
+                    line-height: 16px;
+                    color: #AAA;
+                }
+            }
+
+            .meeting__category {
+                flex: 2;
+            }
+
+            .meeting__date {
+                flex: 1;
+                color: #999;
+            }
+
+            .meeting__time {
+                flex: 1;
+                color: #999;
+            }
+
+            .meeting__employee {
+                flex: 1;
+            }
+
+            &--active {
+                background-color: rgba(255, 0, 0, 0.1);
+                color: tomato;
+                border: 1px solid rgba(90, 35, 35, 0.45);
+                transition: 0.45s ease;
+
+                .meeting__group {
+
+                    .group__status {
+                        font-weight: 700;
+                        text-transform: uppercase;
+                        font-size: 10px;
+                        letter-spacing: 0.25px;
+                        color: rgb(255, 169, 154);
+                        margin-bottom: 0.2rem;
+                        padding-left: 0.8rem;
+                        position: relative;
+
+                        &::after {
+                            content: '';
+                            position: absolute;
+                            height: 6px;
+                            width: 6px;
+                            border-radius: 6px;
+                            top: 0.25rem;
+                            left: 0;
+                            background-color: transparent;
+                            animation: activeStatusAnimation 0.85s ease-in-out alternate infinite;
+                        }
+
+                        @keyframes activeStatusAnimation {
+                            from {
+                                background-color: transparent;
+                            }
+
+                            to {
+                                background-color: tomato;
+                            }
+                        }
+                    }
+
+                    .group__name {
+                        font-weight: 700;
+                        font-size: 12px;
+                    }
+
+                    .group__description {
+                        color: tomato;
+                    }
+                }
+
+                .meeting__date {
+                    color: tomato;
+                }
+
+                .meeting__time {
+                    color: tomato;
+                }
+            }
+        }
+    }
+}
