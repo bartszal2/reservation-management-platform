@@ -72,13 +72,13 @@ The most important functionalities of the platform can be found below!
 
 ## Installation
 In the source code editor, navigate to the folder containing the project source.
-### `cd ../reservation-management-platform/src`
+#### `cd ../reservation-management-platform/src`
 
 Install the dependencies needed to run the application.
-### `npm install`
+#### `npm install`
 
 Launch the app!
-### `npm start`
+#### `npm start`
 <br>
 
 #### [Back to top](#platform-for-managing-the-booking-of-rooms-and-digital-signage-system)
